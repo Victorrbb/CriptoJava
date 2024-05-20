@@ -3,35 +3,47 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerEntraCompraCripto.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Bitcoin.java</file>
-            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerVendeCripto.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Compra.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/CompraRipple.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/DAO/InvestidorDAO.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/EntrarConsultarDeposito.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Usuario.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerEntraSaldo.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Cotacao.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Login.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Inicial.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Depositar.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerMenu.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerSacar.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Ethereum.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerCompraBitcoin.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/LoginSacar.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerVerSaldo.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Real.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/DAO/Conexao.java</file>
-            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerCompraCripto.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Ripple.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerEntrarDeposito.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Sacar.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/EntrarCompraCripto.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Menu.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Consultar.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Taxa.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerLogin.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Carteira.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/projetocripto/ProjetoCripto.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerEntrarSacar.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Comprabitcoin.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Investidor.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerDeposito.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerCadastro.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/CompraEthereum.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/CotrollerConsultaExtrato.java</file>
-            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/controller/ControllerAtualizr.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/Cadastro.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/EntraVendeCripto.java</file>
             <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/model/Moedas.java</file>
+            <file>file:/C:/Users/victo/Downloads/ProjetoCripto/src/view/LoginDepositar.java</file>
         </group>
     </open-files>
 </project-private>

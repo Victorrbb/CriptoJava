@@ -11,16 +11,32 @@ import model.Investidor;
 import view.Depositar;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import model.Carteira;
+import model.Moedas;
+import model.Real;
 
 /**
  *
  * @author victo
  */
 public class ControllerDeposito {
-    private Depositar view;
     
+    
+    private Depositar view;
+    private Investidor investidor ;
+
     public ControllerDeposito(Depositar view) {
         this.view = view;
+    }
+
+    public ControllerDeposito(Investidor investidor) {
+        this.investidor = investidor;
+    }
+
+    public ControllerDeposito(Depositar view, Investidor investidor) {
+        this.view = view;
+        this.investidor = investidor;
     }
 
     public Depositar getView() {
@@ -30,53 +46,40 @@ public class ControllerDeposito {
     public void setView(Depositar view) {
         this.view = view;
     }
-    
+
+    public Investidor getInvestidor() {
+        return investidor;
+    }
+
+    public void setInvestidor(Investidor investidor) {
+        this.investidor = investidor;
+    }
+   
     public void deposito(){
+        double deposito =  Double.parseDouble(view.getTxtDeposito().getText());
+        double realatual = Double.parseDouble(view.getLblReal().getText());
+        String cpf = view.getLblCpf().getText();
+        double novosaldoreal=deposito+realatual;
+        ArrayList<Moedas> moedasCarteira = new ArrayList<Moedas>();
+        moedasCarteira.add(new Real(novosaldoreal));
+        Carteira carteira = new Carteira(moedasCarteira);
         
-        String cpf= view.getTxtCpf().getText();
-        String senha = view.getTxtSenha().getText();
-        double valodeposito = Double.parseDouble(view.getTxtDeposito().getText());
+        Investidor investidor = new Investidor(carteira,"",cpf,"");
         Conexao conexao = new Conexao();
         try{
             Connection conn = conexao.getConnection();
-            InvestidorDAO dao = new InvestidorDAO(conn);
+                InvestidorDAO dao = new InvestidorDAO(conn);
+                dao.attreal(investidor);
+                JOptionPane.showMessageDialog(view,"Atualizado com sucesso!agora seu saldo é de "+ novosaldoreal);
+
+            } catch(SQLException e){
+                JOptionPane.showMessageDialog(view,"Falha  de conexão");
+            
+            
         
         }
     
+    
+    
     }
-    
-    
-//    public class ControllerDeposito { 
-//    private Deposito view;
-//
-//    public ControllerDeposito(Deposito view) {
-//        this.view = view;
-//    }
-//    public void depositarSalario(){
-//        String cpf = view.getTxtCpfCliente().getText();
-//        String senha = view.getTxtSenhaCliente().getText();
-//        double valor_deposito = Double.parseDouble(view.getEntrada_valor().getText());
-//
-//        conexao_banco conexao = new conexao_banco();
-//        try{
-//            Connection conn = conexao.getConnection();
-//            DB_Cliente db = new DB_Cliente(conn);
-//            Cliente res = db.getCliente(cpf,senha);
-//            if(res.getCpf().equals("") ){
-//                JOptionPane.showMessageDialog(null, "Cliente inexistente", "Aviso", JOptionPane.ERROR_MESSAGE);
-//            }
-//            else{
-//                res.DepositarContaSalario(valor_deposito);
-//                db.updateCliente(res);
-//                JOptionPane.showMessageDialog(view, "Deposito na conta salario efetuado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        } catch( SQLException e){
-//            JOptionPane.showMessageDialog(view, "Erro de conexão, tente novamente!", "Aviso", JOptionPane.ERROR_MESSAGE);
-//        e.printStackTrace();
-//        }
-//    }
-
-    
-    
-    
-}
+    }

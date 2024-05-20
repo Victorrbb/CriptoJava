@@ -12,6 +12,7 @@ public class Investidor extends Usuario {
     
     
     private Carteira carteira;
+    private Cotacao cotacao;
 
     public Investidor() {
         
@@ -37,6 +38,29 @@ public class Investidor extends Usuario {
     public Investidor(Carteira carteira, String nome, String cpf, String senha) {
         super(nome, cpf, senha);
         this.carteira =  carteira;
+    }
+
+    public Cotacao getCotacao() {
+        return cotacao;
+    }
+
+    public void setCotacao(Cotacao cotacao) {
+        this.cotacao = cotacao;
+    }
+
+    public Investidor(Cotacao cotacao) {
+        this.cotacao = cotacao;
+    }
+
+    public Investidor(Carteira carteira, Cotacao cotacao) {
+        this.carteira = carteira;
+        this.cotacao = cotacao;
+    }
+
+    public Investidor(Carteira carteira, Cotacao cotacao, String nome, String cpf, String senha) {
+        super(nome, cpf, senha);
+        this.carteira = carteira;
+        this.cotacao = cotacao;
     }
     
 

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import model.Cotacao;
 import model.Investidor;
 
 /**
@@ -22,9 +23,7 @@ public class InvestidorDAO {
     }
     
     public ResultSet consultar(Investidor investidor) throws SQLException{
-//        String sql = "select * from aluno where usuario = '" + 
-//                aluno.getUsuario() + "' AND senha = '" +
-//                aluno.getSenha() + "'";
+
         String sql = "select * from investidor where cpf = ? and senha = ?";
         
         PreparedStatement statement = conn.prepareStatement(sql);
@@ -64,11 +63,11 @@ public class InvestidorDAO {
     
     
     }
-        public void attreal(Investidor investidor) throws SQLException{;
+        public void attreal(Investidor investidor) throws SQLException{
         
         String sql = "update investidor set real = ? where cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setDouble(4,investidor.getCarteira().getMoedas().get(0).getSaldo());
+        statement.setDouble(1,investidor.getCarteira().getMoedas().get(0).getSaldo());
         statement.setString(2,investidor.getCpf());       
         statement.execute();
         conn.close();
@@ -77,15 +76,70 @@ public class InvestidorDAO {
         
         
         }
+        
+        
+        
+        public ResultSet buscarcotacao(Investidor investidor) throws SQLException{
+        
+        String sql = "select * from cotacao where id = ? ";        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        if (investidor.getCotacao() == null) {
+        // Se for null, cria uma nova instância de Cotacao com o ID desejado
+        investidor.setCotacao(new Cotacao(1)); // Defina o ID desejado, no seu caso 1
+    }
+    
+    // Define o parâmetro da consulta com o ID da Cotacao
+    statement.setInt(1, investidor.getCotacao().getId());
+    
+    statement.execute();
+    ResultSet resultado = statement.getResultSet();
+    return resultado;
+        
+    
+    }
+    
+    
+    public void atualizarcotacao (Investidor investidor) throws SQLException{
+        
+        String sql = "update cotacao set cotacaobitcoin = ?,cotacaoethereum = ? , cotacaoripple = ? where id = ?";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        
+        if (investidor.getCotacao() == null) {
+        // Se for null, cria uma nova instância de Cotacao com o ID desejado
+        investidor.setCotacao(new Cotacao(1)); // Defina o ID desejado, no seu caso 1
+    }
+        statement.setDouble(1, investidor.getCotacao().getCotacaobitcoin());
+        statement.setDouble(2, investidor.getCotacao().getCotacaoethereum());
+        statement.setDouble(3, investidor.getCotacao().getCotacaoripple());
+        statement.setInt(4, investidor.getCotacao().getId());
+        
+         statement.executeUpdate();
+         
+        conn.close();
+        
+    
+    
+    }
+    public void atualizarInvestidor(Investidor investidor) throws SQLException {
+    String sql = "update investidor set real = ?, bitcoin = ?, ethereum = ?, ripple = ? where cpf = ?";
+    PreparedStatement statement = conn.prepareStatement(sql);
+    statement.setDouble(1, investidor.getCarteira().getMoedas().get(0).getSaldo());
+    statement.setDouble(2, investidor.getCarteira().getMoedas().get(1).getSaldo());
+    statement.setDouble(3, investidor.getCarteira().getMoedas().get(2).getSaldo());
+    statement.setDouble(4, investidor.getCarteira().getMoedas().get(3).getSaldo());
+    statement.setString(5, investidor.getCpf());
+
+    statement.executeUpdate(); // Executa a atualização
+    conn.close(); // Fecha a conexão
+}
+        
+        
+        
+        
+       
+    }
 
     
     
-//    public void atualizar (Aluno aluno) throws SQLException{;
-//        
-//        String sql = "update aluno set senha = ? where usuario = ?";
-//        PreparedStatement statement = conn.prepareStatement(sql);
-//        statement.setString(1, aluno.getSenha());
-//        statement.setString(2,aluno.getUsuario());
-//        statement.execute();
-//        conn.close();
-}
+
+
