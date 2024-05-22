@@ -60,16 +60,13 @@ public class ControllerDeposito {
         double realatual = Double.parseDouble(view.getLblReal().getText());
         String cpf = view.getLblCpf().getText();
         double novosaldoreal=deposito+realatual;
-        ArrayList<Moedas> moedasCarteira = new ArrayList<Moedas>();
-        moedasCarteira.add(new Real(novosaldoreal));
-        Carteira carteira = new Carteira(moedasCarteira);
-        
-        Investidor investidor = new Investidor(carteira,"",cpf,"");
+        investidor.getCarteira().getMoedas().get(0).setSaldo(novosaldoreal);
         Conexao conexao = new Conexao();
         try{
             Connection conn = conexao.getConnection();
                 InvestidorDAO dao = new InvestidorDAO(conn);
                 dao.attreal(investidor);
+                dao.extratodeposito(investidor, deposito);
                 JOptionPane.showMessageDialog(view,"Atualizado com sucesso!agora seu saldo é de "+ novosaldoreal);
 
             } catch(SQLException e){

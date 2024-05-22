@@ -9,6 +9,7 @@ import controller.ControllerEntrarSacar;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import model.Investidor;
 
 /**
  *
@@ -19,9 +20,10 @@ public class LoginSacar extends javax.swing.JFrame {
     /**
      * Creates new form LoginSacar
      */
-    public LoginSacar() {
+    public LoginSacar(Investidor investidor) {
         initComponents();
         controller = new ControllerEntrarSacar(this);
+        this.investidor=investidor;
     }
 
     public JLabel getjLabel1() {
@@ -92,10 +94,10 @@ public class LoginSacar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
         jLabel1.setText("Insia seu cpf e senha para fazer seu saque :");
 
-        jbjLogarSacar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jbjLogarSacar.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         jbjLogarSacar.setText("ir para o saque");
         jbjLogarSacar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,12 +105,12 @@ public class LoginSacar extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Bright", 1, 12)); // NOI18N
         jLabel2.setText("Cpf:");
 
-        jLabel3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Bright", 1, 12)); // NOI18N
         jLabel3.setText("Senha:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -153,7 +155,7 @@ public class LoginSacar extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
+                        .addGap(177, 177, 177)
                         .addComponent(jbjLogarSacar)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -164,9 +166,9 @@ public class LoginSacar extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(29, 29, 29)
                 .addComponent(jbjLogarSacar)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,7 +213,7 @@ public class LoginSacar extends javax.swing.JFrame {
 //        });
 //    }+9
     private ControllerEntrarSacar controller;
-
+private Investidor investidor ;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

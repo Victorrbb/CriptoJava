@@ -155,33 +155,33 @@ public class Consultar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        jLabel1.setText("Este são seus saldos");
+        jLabel1.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
+        jLabel1.setText("Este são seus saldos:");
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblBitcoin.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lblBitcoin.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         lblBitcoin.setText("-----");
 
-        lblEthereum.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lblEthereum.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         lblEthereum.setText("-----");
 
-        jLabel4.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         jLabel4.setText("Real");
 
-        jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         jLabel5.setText("Ripple");
 
-        jLabel6.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         jLabel6.setText("Bitcoin");
 
-        jLabel7.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         jLabel7.setText("Ethereum");
 
-        lblReal.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lblReal.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         lblReal.setText("----");
 
-        lblRipple.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lblRipple.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         lblRipple.setText("-----");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -224,6 +224,7 @@ public class Consultar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jbjVoltar.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         jbjVoltar.setText("Voltar");
         jbjVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,24 +239,22 @@ public class Consultar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(260, 260, 260)
                         .addComponent(jbjVoltar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jbjVoltar)
                 .addContainerGap())
         );

@@ -24,19 +24,19 @@ public class ControllerSacar {
     
     
     private Sacar view;
-    private Investidor aluno ;
+    private Investidor investidor ;
 
     public ControllerSacar(Sacar view) {
         this.view = view;
     }
 
-    public ControllerSacar(Investidor aluno) {
-        this.aluno = aluno;
+    public ControllerSacar(Investidor investidor) {
+        this.investidor = investidor;
     }
 
-    public ControllerSacar(Sacar view, Investidor aluno) {
+    public ControllerSacar(Sacar view, Investidor investidor) {
         this.view = view;
-        this.aluno = aluno;
+        this.investidor = investidor;
     }
 
     public Sacar getView() {
@@ -47,12 +47,12 @@ public class ControllerSacar {
         this.view = view;
     }
 
-    public Investidor getAluno() {
-        return aluno;
+    public Investidor getInvestidor() {
+        return investidor;
     }
 
-    public void setAluno(Investidor aluno) {
-        this.aluno = aluno;
+    public void setInvestidor(Investidor investidor) {
+        this.investidor = investidor;
     }
    
     public void sacar(){
@@ -69,17 +69,14 @@ public class ControllerSacar {
             
         
         }
-        ArrayList<Moedas> moedasCarteira = new ArrayList<Moedas>();
-        moedasCarteira.add(new Real(novosaldoreal));
-        Carteira carteira = new Carteira(moedasCarteira);
-        
-        Investidor investidor = new Investidor(carteira,"",cpf,"");
+         investidor.getCarteira().getMoedas().get(0).setSaldo(novosaldoreal);
         Conexao conexao = new Conexao();
         try{
             Connection conn = conexao.getConnection();
                 InvestidorDAO dao = new InvestidorDAO(conn);
                 dao.attreal(investidor);
-                JOptionPane.showMessageDialog(view,"Atualizado com sucesso! agora esse é seu novo saldo:"+ novosaldoreal);
+                dao.extratosaque(investidor, saque);
+                JOptionPane.showMessageDialog(view,"Atualizado com sucesso!agora seu saldo é de "+ novosaldoreal);
 
             } catch(SQLException e){
                 JOptionPane.showMessageDialog(view,"Falha  de conexão");

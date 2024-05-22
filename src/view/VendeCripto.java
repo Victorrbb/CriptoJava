@@ -84,15 +84,28 @@ public class VendeCripto extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        lblCpf = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jbjBitcoin = new javax.swing.JButton();
         jbjEthereum = new javax.swing.JButton();
         jbjRipple = new javax.swing.JButton();
-        lblCpf = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
         jLabel1.setText("Escolha uma dessas moedas para vender:");
 
+        lblCpf.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
+        lblCpf.setText("cpf");
+
+        jLabel2.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
+        jLabel2.setText("cpf:");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jbjBitcoin.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
         jbjBitcoin.setText("Bitcoin");
         jbjBitcoin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +113,7 @@ public class VendeCripto extends javax.swing.JFrame {
             }
         });
 
+        jbjEthereum.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
         jbjEthereum.setText("Ethereum");
         jbjEthereum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +121,7 @@ public class VendeCripto extends javax.swing.JFrame {
             }
         });
 
+        jbjRipple.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
         jbjRipple.setText("Ripple");
         jbjRipple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +129,37 @@ public class VendeCripto extends javax.swing.JFrame {
             }
         });
 
-        lblCpf.setText("jLabel2");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jbjBitcoin)
+                .addGap(34, 34, 34)
+                .addComponent(jbjEthereum)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jbjRipple)
+                .addGap(29, 29, 29))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbjBitcoin)
+                    .addComponent(jbjEthereum)
+                    .addComponent(jbjRipple))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jButton1.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
+        jButton1.setText("Volta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,33 +168,34 @@ public class VendeCripto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel1))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jbjBitcoin)
-                        .addGap(27, 27, 27)
-                        .addComponent(jbjEthereum)
-                        .addGap(32, 32, 32)
-                        .addComponent(jbjRipple))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(lblCpf)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addGap(178, 178, 178)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCpf)
-                .addGap(7, 7, 7)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbjBitcoin)
-                    .addComponent(jbjEthereum)
-                    .addComponent(jbjRipple))
-                .addGap(114, 114, 114))
+                    .addComponent(lblCpf)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(57, 57, 57)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,6 +218,12 @@ public class VendeCripto extends javax.swing.JFrame {
         rip.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jbjRippleActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    Menu menu = new Menu(investidor);
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,7 +262,10 @@ public class VendeCripto extends javax.swing.JFrame {
     private Investidor investidor;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbjBitcoin;
     private javax.swing.JButton jbjEthereum;
     private javax.swing.JButton jbjRipple;

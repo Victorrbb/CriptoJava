@@ -89,17 +89,38 @@ public class ControllerVendeBitcoin {
         Carteira carteira = new Carteira(moedasCarteira);
         Investidor investidorAtualizado = new Investidor(carteira, investidor.getCotacao(), investidor.getNome(), investidor.getCpf(), investidor.getSenha());
 
-        try (Connection conn = conexao.getConnection()) {
+        Connection conn = null;
+        try {
+            conn = conexao.getConnection();
+            conn.setAutoCommit(false); // Inicia a transação
+
             InvestidorDAO dao = new InvestidorDAO(conn);
             dao.atualizarInvestidor(investidorAtualizado);
+            dao.salvarTransacao(investidor, "-", taxaVenda, "bitcoin", cotacaobitcoin, taxaBitcoinVenda, realfinal, bitcoinfinal, saldoatualethereum, saldoatualripple);
+
+            conn.commit(); // Confirma a transação
             JOptionPane.showMessageDialog(view, "Venda realizada com sucesso");
 
-            // Passa o investidor atualizado para a nova view
             Consultar viewConsultar = new Consultar(investidorAtualizado);
             viewConsultar.setVisible(true);
             view.setVisible(false);
         } catch (SQLException e) {
+            if (conn != null) {
+                try {
+                    conn.rollback(); // Desfaz a transação em caso de erro
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
             JOptionPane.showMessageDialog(view, "Falha de conexão: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
     }
 }

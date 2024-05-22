@@ -12,10 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Bitcoin;
 import model.Carteira;
+import model.Ethereum;
 import model.Investidor;
 import model.Moedas;
 import model.Real;
+import model.Ripple;
 
 import view.Sacar;
 import view.Login;
@@ -56,8 +59,14 @@ public class ControllerEntrarSacar {
                 String senha = res.getString("senha");
                 String nome = res.getString("nome");
                 double real = res.getDouble("real");
+                double bitcoin = res.getDouble("bitcoin");
+                double ethereum = res.getDouble("ethereum");
+                double ripple = res.getDouble("ripple");
                 ArrayList<Moedas> moedasCarteira = new ArrayList<Moedas>();
                 moedasCarteira.add(new Real(real));
+                 moedasCarteira.add(new Bitcoin(bitcoin));
+                moedasCarteira.add(new Ethereum(ethereum));
+                moedasCarteira.add(new Ripple(ripple));
                 Carteira carteira = new Carteira(moedasCarteira);
                 Sacar viewSacar = new Sacar(new Investidor(carteira,nome,cpf,senha));
                

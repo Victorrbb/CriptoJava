@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import model.Cotacao;
 import model.Investidor;
 
@@ -70,7 +72,7 @@ public class InvestidorDAO {
         statement.setDouble(1,investidor.getCarteira().getMoedas().get(0).getSaldo());
         statement.setString(2,investidor.getCpf());       
         statement.execute();
-        conn.close();
+        
         
         
         
@@ -130,11 +132,69 @@ public class InvestidorDAO {
     statement.setString(5, investidor.getCpf());
 
     statement.executeUpdate(); // Executa a atualização
-    conn.close(); // Fecha a conexão
+     // Fecha a conexão
 }
         
+      public boolean salvarTransacao(Investidor investidor ,String sinal, double valor,String moeda, double cotacao,double taxa,double real,double bitcoin,double ethereum,double ripple) throws SQLException{
+       String sql = "insert into transacao (cpf, data, sinal, valor, moeda, cotacao,taxa,real,bitcoin,ethereum,ripple) values ('" + 
+                investidor.getCpf() + "' , '" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) + "' , '" + 
+                sinal +  "' , '" + valor + "' , '" +  moeda  +"','"+ cotacao + "' , '" + taxa +"','"+real+"','"+bitcoin+"','"+ethereum+"','"+ripple+ "')";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.execute();
+        
+        return true;
+    }  
+      
+    public void extratodeposito(Investidor investidor, double valor) throws SQLException {
+        String sql = "INSERT INTO transacao(cpf, data, sinal, valor, moeda, "
+                + "cotacao, taxa, \"real\", bitcoin, ethereum, ripple) VALUES "
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, investidor.getCpf());
+        statement.setString(2, LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+        statement.setString(3, "+");
+        statement.setDouble(4, valor);
+        statement.setString(5, "Real");
+        statement.setDouble(6, 0);
+        statement.setDouble(7, 0);
+        statement.setDouble(8, investidor.getCarteira().getMoedas().get(0).getSaldo());
+        statement.setDouble(9, investidor.getCarteira().getMoedas().get(1).getSaldo());
+        statement.setDouble(10, investidor.getCarteira().getMoedas().get(2).getSaldo());
+        statement.setDouble(11, investidor.getCarteira().getMoedas().get(3).getSaldo());
+        
+        statement.execute();
         
         
+     }
+        public void extratosaque(Investidor investidor, double valor) throws SQLException {
+        String sql = "INSERT INTO transacao(cpf, data, sinal, valor, moeda, "
+                + "cotacao, taxa, \"real\", bitcoin, ethereum, ripple) VALUES "
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, investidor.getCpf());
+        statement.setString(2, LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+        statement.setString(3, "-");
+        statement.setDouble(4, valor);
+        statement.setString(5, "Real");
+        statement.setDouble(6, 0);
+        statement.setDouble(7, 0);
+        statement.setDouble(8, investidor.getCarteira().getMoedas().get(0).getSaldo());
+        statement.setDouble(9, investidor.getCarteira().getMoedas().get(1).getSaldo());
+        statement.setDouble(10, investidor.getCarteira().getMoedas().get(2).getSaldo());
+        statement.setDouble(11, investidor.getCarteira().getMoedas().get(3).getSaldo());
+        
+        statement.execute();
+        
+        
+     }
+        public ResultSet acharExtrato(String cpf) throws SQLException{
+        String sql = "select * from transacao where cpf = ?";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,cpf);
+        statement.execute();
+        ResultSet resultado = statement.getResultSet();
+        return resultado;
+    }
         
        
     }
