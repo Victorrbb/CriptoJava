@@ -73,60 +73,63 @@ public class ControllerCompraBitcoin {
     double cotacaobitcoin = investidor.getCotacao().getCotacaobitcoin();
     double saldorealatual = investidor.getCarteira().getMoedas().get(0).getSaldo();
     double saldobitcoinatual = investidor.getCarteira().getMoedas().get(1).getSaldo();
-    double saldoatualethereum = investidor.getCarteira().getMoedas().get(2).getSaldo();
-    double saldoatualripple = investidor.getCarteira().getMoedas().get(3).getSaldo();
     Bitcoin bitcoinInstance = new Bitcoin();                       
     double taxaBitcoinCompra = bitcoinInstance.getTaxaCompra();            
     
     double saldoAposTaxa = real * (1 - taxaBitcoinCompra);
-    if (saldoAposTaxa < 0) {
-        JOptionPane.showMessageDialog(view, "Saldo insuficiente para comprar bitcoin.");
-        return; // Sai do método se o saldo após a taxa for negativo
-    }
-    double quantidadeBitcoin = saldoAposTaxa / cotacaobitcoin;
     double realfinal = saldorealatual - real;
+    
+    // Verifica se o saldo final de Real é negativo
+    if (realfinal < 0) {
+        JOptionPane.showMessageDialog(view, "Saldo insuficiente para comprar Bitcoin.");
+        return;
+    }
+    
+    double quantidadeBitcoin = saldoAposTaxa / cotacaobitcoin;
     double bitcoinfinal = saldobitcoinatual + quantidadeBitcoin;
     
     ArrayList<Moedas> moedasCarteira = new ArrayList<>();
     moedasCarteira.add(new Real(realfinal)); // Atualizando saldo final de Real
-    moedasCarteira.add(new Bitcoin(bitcoinfinal));
-    moedasCarteira.add(new Ethereum(saldoatualethereum));
-    moedasCarteira.add(new Ripple(saldoatualripple));// Atualizando saldo final de Bitcoin
+    moedasCarteira.add(new Bitcoin(bitcoinfinal)); // Atualizando saldo final de Bitcoin
+    moedasCarteira.add(new Ethereum(investidor.getCarteira().getMoedas().get(2).getSaldo())); // Mantendo saldo de Ethereum
+    moedasCarteira.add(new Ripple(investidor.getCarteira().getMoedas().get(3).getSaldo())); // Mantendo saldo de Ripple
     Carteira carteira = new Carteira(moedasCarteira);
     Investidor investidorAtualizado = new Investidor(carteira, nome, cpf, senha);
     
     Connection conn = null;
-        try {
-            conn = conexao.getConnection();
-            conn.setAutoCommit(false); // Inicia a transação
+    try {
+        conn = conexao.getConnection();
+        conn.setAutoCommit(false); // Inicia a transação
 
-            InvestidorDAO dao = new InvestidorDAO(conn);
-            dao.atualizarInvestidor(investidorAtualizado);
-            dao.salvarTransacao(investidor, "+", saldoAposTaxa, "bitcoin", cotacaobitcoin, taxaBitcoinCompra, realfinal, bitcoinfinal, saldoatualethereum, saldoatualripple);
+        InvestidorDAO dao = new InvestidorDAO(conn);
+        dao.atualizarInvestidor(investidorAtualizado);
+        dao.salvarTransacao(investidor, "+", saldoAposTaxa, "bitcoin", cotacaobitcoin, taxaBitcoinCompra, realfinal, bitcoinfinal, investidor.getCarteira().getMoedas().get(2).getSaldo(), investidor.getCarteira().getMoedas().get(3).getSaldo());
 
-            conn.commit(); // Confirma a transação
-            JOptionPane.showMessageDialog(view, "Compra realizada com sucesso");
+        conn.commit(); // Confirma a transação
+        JOptionPane.showMessageDialog(view, "Compra de Bitcoin realizada com sucesso");
 
-            Consultar viewConsultar = new Consultar(investidorAtualizado);
-            viewConsultar.setVisible(true);
-            view.setVisible(false);
-        } catch (SQLException e) {
-            if (conn != null) {
-                try {
-                    conn.rollback(); // Desfaz a transação em caso de erro
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
+        Consultar viewConsultar = new Consultar(investidorAtualizado);
+        viewConsultar.setVisible(true);
+        view.setVisible(false);
+    } catch (SQLException e) {
+        if (conn != null) {
+            try {
+                conn.rollback(); // Desfaz a transação em caso de erro
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
-            JOptionPane.showMessageDialog(view, "Falha de conexão: " + e.getMessage());
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
+        }
+        JOptionPane.showMessageDialog(view, "Falha de conexão: " + e.getMessage());
+    } finally {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
         }
     }
 }
+
+}
+    

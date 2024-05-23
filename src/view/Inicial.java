@@ -23,13 +23,7 @@ public class Inicial extends javax.swing.JFrame {
         this.jLabel1 = jLabel1;
     }
 
-    public JButton getJbCadastro() {
-        return jbCadastro;
-    }
-
-    public void setJbCadastro(JButton jbCadastro) {
-        this.jbCadastro = jbCadastro;
-    }
+    
 
     public JButton getJbEntre() {
         return jbEntre;
@@ -61,7 +55,6 @@ public class Inicial extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jbCadastro = new javax.swing.JButton();
         jbEntre = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,14 +63,6 @@ public class Inicial extends javax.swing.JFrame {
         jLabel1.setText("Bem vindo a Exchange de Criptomoedas ");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jbCadastro.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
-        jbCadastro.setText("Cadastro");
-        jbCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCadastroActionPerformed(evt);
-            }
-        });
 
         jbEntre.setFont(new java.awt.Font("Lucida Bright", 0, 12)); // NOI18N
         jbEntre.setText("Entre");
@@ -92,20 +77,16 @@ public class Inicial extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbEntre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(83, 83, 83)
+                .addComponent(jbEntre, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jbCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
                 .addComponent(jbEntre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,12 +114,6 @@ public class Inicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jbCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroActionPerformed
-        Cadastro cad = new Cadastro();
-        cad.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jbCadastroActionPerformed
 
     private void jbEntreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntreActionPerformed
         Login log = new Login();
@@ -184,7 +159,6 @@ public class Inicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbCadastro;
     private javax.swing.JButton jbEntre;
     // End of variables declaration//GEN-END:variables
 }

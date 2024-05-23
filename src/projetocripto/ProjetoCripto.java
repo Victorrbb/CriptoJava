@@ -18,5 +18,6 @@ public class ProjetoCripto {
         Inicial lf = new Inicial();
         lf.setVisible(true);
     }
+//    https://youtu.be/EhQzwEQXxhE
     
 }

@@ -41,7 +41,7 @@ public class ControllerVendeEthereum {
         double quantidadeEthereum = quantidadeemreal / cotacaoethereum;
 
         // Calcula o valor da taxa de venda
-        double taxaVenda = quantidadeemreal * taxaEthereumVenda;
+        double taxaVenda = quantidadeemreal * (1-taxaEthereumVenda);
 
         // Calcula o valor líquido que o usuário receberá
         double valorLiquidoRecebido = quantidadeemreal - taxaVenda;
@@ -51,7 +51,7 @@ public class ControllerVendeEthereum {
             return;
         }
 
-        double realfinal = saldorealatual + valorLiquidoRecebido;
+        double realfinal = saldorealatual + taxaVenda;
         double ethereumfinal = saldoatualethereum - quantidadeEthereum;
 
         // Verifica se o saldo final de Ethereum é negativo, se sim, ajusta para zero

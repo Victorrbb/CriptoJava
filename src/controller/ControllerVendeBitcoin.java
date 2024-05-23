@@ -60,7 +60,7 @@ public class ControllerVendeBitcoin {
         double quantidadeBitcoin = quantidadeemreal / cotacaobitcoin;
 
 // Calcula o valor da taxa de venda
-        double taxaVenda = quantidadeemreal * taxaBitcoinVenda;
+        double taxaVenda = quantidadeemreal * (1-taxaBitcoinVenda);
 
         // Calcula o valor líquido que o usuário receberá
         double valorLiquidoRecebido = quantidadeemreal - taxaVenda;
@@ -70,7 +70,7 @@ public class ControllerVendeBitcoin {
             return;
         }
 
-        double realfinal = investidor.getCarteira().getMoedas().get(0).getSaldo() + valorLiquidoRecebido;
+        double realfinal = investidor.getCarteira().getMoedas().get(0).getSaldo() + taxaVenda;
         double bitcoinfinal = saldobitcoinatual - quantidadeBitcoin;
 
         // Verifica se o saldo final de bitcoin é negativo, se sim, ajusta para zero

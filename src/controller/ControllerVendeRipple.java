@@ -41,7 +41,7 @@ public class ControllerVendeRipple {
         double quantidadeRipple = quantidadeemreal / cotacaoripple;
 
         // Calcula o valor da taxa de venda
-        double taxaVenda = quantidadeemreal * taxaRippleVenda;
+        double taxaVenda = quantidadeemreal * (1-taxaRippleVenda);
 
         // Calcula o valor líquido que o usuário receberá
         double valorLiquidoRecebido = quantidadeemreal - taxaVenda;
@@ -51,7 +51,7 @@ public class ControllerVendeRipple {
             return;
         }
 
-        double realfinal = saldorealatual + valorLiquidoRecebido;
+        double realfinal = saldorealatual + taxaVenda;
         double ripplefinal = saldoatualripple - quantidadeRipple;
 
         // Verifica se o saldo final de Ripple é negativo, se sim, ajusta para zero

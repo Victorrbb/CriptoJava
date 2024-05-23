@@ -89,6 +89,7 @@ public class Comprabitcoin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lblCotacao = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,6 +165,13 @@ public class Comprabitcoin extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
+        jButton1.setText("volta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,7 +188,9 @@ public class Comprabitcoin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbjCompra)
-                .addGap(248, 248, 248))
+                .addGap(87, 87, 87)
+                .addComponent(jButton1)
+                .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -205,7 +215,9 @@ public class Comprabitcoin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jbjCompra)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbjCompra)
+                    .addComponent(jButton1))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -215,6 +227,12 @@ public class Comprabitcoin extends javax.swing.JFrame {
     private void jbjCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbjCompraActionPerformed
        controller.compraBitcoin();
     }//GEN-LAST:event_jbjCompraActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    Menu menu = new Menu(investidor);
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,6 +272,7 @@ public class Comprabitcoin extends javax.swing.JFrame {
 
 private Investidor investidor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

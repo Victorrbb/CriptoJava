@@ -31,10 +31,13 @@ public class ControllerExtrato {
             ResultSet res = dao.acharExtrato(investidor.getCpf());
 
             DefaultListModel<String> model = new DefaultListModel<>();
-            model.addElement(String.format("Nome: %s", investidor.getNome()));
-            model.addElement(String.format("CPF: %s", investidor.getCpf()));
+             model.addElement(String.format("Nome: %s", investidor.getNome()));
+        model.addElement(String.format("CPF: %s", investidor.getCpf()));
+        
+        model.addElement("");
+           
             
-            model.addElement("");
+            
 
             boolean hasData = false;  // Verificar se há dados
 
